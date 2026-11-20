@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#082055"/>
+      <stop offset="60%" stop-color="#030a18"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="vase" x1="20%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#70d0ff"/>
+      <stop offset="45%" stop-color="#0066ff"/>
+      <stop offset="100%" stop-color="#002673"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <ellipse cx="300" cy="375" rx="125" ry="22" fill="#0066ff" opacity="0.25" filter="url(#glow)"/>
+  <!-- Spiral fluted 3D vase -->
+  <g filter="url(#glow)">
+    <path d="M250 105 C255 155, 195 210, 205 280 C212 330, 240 365, 255 372 L345 372 C360 365, 388 330, 395 280 C405 210, 345 155, 350 105 Z" fill="url(#vase)" stroke="#80d4ff" stroke-width="2.5"/>
+    <ellipse cx="300" cy="105" rx="50" ry="13" fill="#031130" stroke="#80d4ff" stroke-width="2.5"/>
+    <!-- Spiral 3D ribs -->
+    <path d="M265 117 C240 185, 230 270, 265 370" stroke="#99ddff" stroke-width="2" opacity="0.7"/>
+    <path d="M285 118 C275 190, 268 275, 290 372" stroke="#ffffff" stroke-width="2" opacity="0.75"/>
+    <path d="M312 118 C322 190, 330 275, 315 372" stroke="#80d4ff" stroke-width="2" opacity="0.65"/>
+    <path d="M334 116 C360 185, 368 270, 338 370" stroke="#4db3ff" stroke-width="2" opacity="0.6"/>
+    <!-- Geometric Voronoi accents -->
+    <polygon points="300,195 330,220 318,260 282,260 270,220" stroke="#bfe8ff" stroke-width="1.5" fill="rgba(0,10,30,0.28)"/>
+    <polygon points="300,275 328,298 316,336 284,336 272,298" stroke="#bfe8ff" stroke-width="1.5" fill="rgba(0,10,30,0.28)"/>
+  </g>
+  <text x="30" y="42" fill="#5cc8ff" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" opacity="0.85">JULIFOR3D · DECORACIÓN GEOMÉTRICA</text>
+</svg>

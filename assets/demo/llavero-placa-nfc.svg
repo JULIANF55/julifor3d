@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#072057"/>
+      <stop offset="60%" stop-color="#030a18"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <g filter="url(#glow)">
+    <!-- Keychain ring -->
+    <circle cx="178" cy="225" r="28" stroke="#a6c8ff" stroke-width="5.5"/>
+    <!-- Custom multicolor name/logo tag -->
+    <rect x="206" y="168" width="236" height="114" rx="22" fill="#061026" stroke="#0066ff" stroke-width="4.5"/>
+    <circle cx="234" cy="225" r="10" fill="#000000" stroke="#5cc8ff" stroke-width="3"/>
+    <!-- Raised 3D relief stripes + text -->
+    <rect x="262" y="196" width="152" height="28" rx="6" fill="#0066ff" opacity="0.9"/>
+    <text x="338" y="216" text-anchor="middle" fill="#ffffff" font-family="Montserrat, Arial, sans-serif" font-size="17" font-weight="800" letter-spacing="2">TU NOMBRE</text>
+    <text x="338" y="252" text-anchor="middle" fill="#80d4ff" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3">QR · LOGO · 3D</text>
+  </g>
+  <text x="30" y="42" fill="#5cc8ff" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" opacity="0.85">JULIFOR3D · RELIEVE MULTICOLOR</text>
+</svg>

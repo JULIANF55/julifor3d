@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel Administrativo | JuliFor3D</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+  <div class="tech-bg" aria-hidden="true"></div>
+
+  <div id="adminDemoBanner" class="demo-banner hidden" role="status">
+    <span>
+      <strong>Modo demostración (sin conexión):</strong> los cambios se guardan en este navegador. Configura <code>config.js</code> para usar Supabase Auth, Database y Storage.
+    </span>
+  </div>
+
+  <!-- ================= PANTALLA DE LOGIN ================= -->
+  <section id="authScreen" class="auth-screen">
+    <div class="neon-card auth-card">
+      <div class="auth-header">
+        <img src="assets/logo.jpeg" alt="Logo JuliFor3D" class="auth-logo" />
+        <h1 class="brand-wordmark">JuliFor<span class="accent-3d">3D</span> Admin</h1>
+        <p>Inicia sesión con tu cuenta de Supabase Auth para gestionar el catálogo y las ideas de clientes.</p>
+      </div>
+
+      <div id="authDemoBox" class="auth-demo-box hidden">
+        <p>
+          <strong>Supabase aún no está configurado en <code>config.js</code>.</strong>
+          Puedes explorar y probar el panel completo en modo demostración local:
+        </p>
+        <button type="button" id="enterDemoBtn" class="btn btn-secondary btn-sm" style="width: 100%;">
+          Entrar en modo demostración
+        </button>
+      </div>
+
+      <form id="loginForm" class="form-grid" style="grid-template-columns: 1fr;" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Correo electrónico</label>
+          <input
+            type="email"
+            id="loginEmail"
+            class="form-control"
+            placeholder="admin@julifor3d.com"
+            autocomplete="email"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Contraseña</label>
+          <input
+            type="password"
+            id="loginPassword"
+            class="form-control"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+
+        <button type="submit" id="loginSubmitBtn" class="btn btn-primary" style="width: 100%;">
+          Iniciar sesión
+        </button>
+
+        <div id="loginError" class="form-feedback error" role="alert"></div>
+      </form>
+
+      <div class="auth-back">
+        <a href="index.html">← Volver al sitio público de JuliFor3D</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PANEL PRIVADO ================= -->
+  <div id="adminShell" class="admin-shell hidden">
+    <header class="admin-topbar">
+      <div class="container admin-topbar-inner">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.jpeg" alt="JuliFor3D" class="nav-logo" />
+          <div class="nav-brand-text">
+            <span class="brand-wordmark">JuliFor<span class="accent-3d">3D</span> · Admin</span>
+            <span class="nav-brand-sub">PANEL DE GESTIÓN</span>
+          </div>
+        </a>
+
+        <div class="admin-user-bar">
+          <span id="adminUserEmail" class="user-pill"></span>
+          <a href="index.html" class="btn btn-ghost btn-sm">Ver sitio</a>
+          <button type="button" id="logoutBtn" class="btn btn-danger btn-sm">Cerrar sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="container admin-main">
+      <!-- Resumen rápido -->
+      <div class="stats-grid">
+        <div class="neon-card stat-card">
+          <span class="stat-label">Productos totales</span>
+          <span id="statTotalProducts" class="stat-value">0</span>
+        </div>
+        <div class="neon-card stat-card">
+          <span class="stat-label">Visibles en catálogo</span>
+          <span id="statActiveProducts" class="stat-value">0</span>
+        </div>
+        <div class="neon-card stat-card">
+          <span class="stat-label">Categorías</span>
+          <span id="statCategories" class="stat-value">0</span>
+        </div>
+        <div class="neon-card stat-card">
+          <span class="stat-label">Ideas nuevas</span>
+          <span id="statNewIdeas" class="stat-value">0</span>
+        </div>
+      </div>
+
+      <!-- Pestañas -->
+      <div class="admin-tabs" role="tablist" aria-label="Secciones del panel">
+        <button type="button" class="tab-btn active" data-tab="productos" role="tab" aria-selected="true">
+          Productos <span id="tabCountProducts" class="tab-count">0</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="categorias" role="tab" aria-selected="false">
+          Categorías <span id="tabCountCategories" class="tab-count">0</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="ideas" role="tab" aria-selected="false">
+          Ideas de clientes <span id="tabCountIdeas" class="tab-count">0</span>
+        </button>
+      </div>
+
+      <!-- ========== PESTAÑA PRODUCTOS ========== -->
+      <section id="panel-productos" class="tab-panel" role="tabpanel">
+        <div class="panel-toolbar">
+          <h2>Gestión de Productos</h2>
+          <button type="button" id="newProductBtn" class="btn btn-primary btn-sm">
+            + Nuevo producto
+          </button>
+        </div>
+
+        <div id="adminProductsGrid" class="admin-products-grid"></div>
+      </section>
+
+      <!-- ========== PESTAÑA CATEGORÍAS ========== -->
+      <section id="panel-categorias" class="tab-panel hidden" role="tabpanel">
+        <div class="panel-toolbar">
+          <h2>Gestión de Categorías</h2>
+        </div>
+
+        <form id="createCategoryForm" class="neon-card category-create-bar">
+          <input
+            type="text"
+            id="newCategoryName"
+            class="form-control"
+            placeholder="Nombre de la nueva categoría (ej: Accesorios gamer)"
+            required
+          />
+          <button type="submit" id="createCategoryBtn" class="btn btn-primary">
+            + Crear categoría
+          </button>
+        </form>
+
+        <div id="categoriesList" class="categories-list"></div>
+      </section>
+
+      <!-- ========== PESTAÑA IDEAS DE CLIENTES ========== -->
+      <section id="panel-ideas" class="tab-panel hidden" role="tabpanel">
+        <div class="panel-toolbar">
+          <h2>Ideas enviadas por clientes</h2>
+          <div id="ideasStatusFilter" class="ideas-filter-row">
+            <button type="button" class="filter-pill active" data-status="all">Todas</button>
+            <button type="button" class="filter-pill" data-status="nueva">Nueva</button>
+            <button type="button" class="filter-pill" data-status="cotizada">Cotizada</button>
+            <button type="button" class="filter-pill" data-status="en producción">En producción</button>
+            <button type="button" class="filter-pill" data-status="entregada">Entregada</button>
+          </div>
+        </div>
+
+        <div id="ideasList" class="ideas-list"></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ================= MODAL CREAR / EDITAR PRODUCTO ================= -->
+  <div id="productFormModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="productModalHeading" aria-hidden="true">
+    <div class="modal-dialog admin-modal-dialog">
+      <button type="button" id="closeProductModalBtn" class="modal-close" aria-label="Cerrar formulario">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <h3 id="productModalHeading">Nuevo producto</h3>
+
+      <form id="productForm" class="form-grid" novalidate>
+        <input type="hidden" id="prodId" />
+
+        <div class="form-group full">
+          <label class="form-label" for="prodName">Nombre del producto <span class="req">*</span></label>
+          <input type="text" id="prodName" class="form-control" placeholder="Ej: Figura Lobo JF Multicolor" required />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="prodCategory">Categoría</label>
+          <select id="prodCategory" class="form-control"></select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="prodPrice">Precio (COP) <span class="req">*</span></label>
+          <input type="number" id="prodPrice" class="form-control" min="0" step="500" placeholder="45000" required />
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label" for="prodDesc">Descripción completa</label>
+          <textarea id="prodDesc" class="form-control" placeholder="Material, medidas aproximadas, colores disponibles, personalización..."></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label" for="prodImage">Foto del producto (Supabase Storage: productos)</label>
+          <input type="file" id="prodImage" class="form-control" accept="image/*" />
+          <div id="prodImagePreviewBox" class="image-preview-box hidden">
+            <img id="prodImagePreview" src="" alt="Vista previa del producto" />
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label class="checkbox-card" for="prodActive">
+            <input type="checkbox" id="prodActive" checked />
+            <div>
+              <span>Visible en el catálogo público</span>
+              <small>Desmarca si deseas ocultar temporalmente este producto sin eliminarlo.</small>
+            </div>
+          </label>
+        </div>
+
+        <div class="form-group full" style="display: flex; flex-direction: row; gap: 10px; justify-content: flex-end;">
+          <button type="button" id="cancelProductModalBtn" class="btn btn-ghost">Cancelar</button>
+          <button type="submit" id="saveProductBtn" class="btn btn-primary">Guardar producto</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

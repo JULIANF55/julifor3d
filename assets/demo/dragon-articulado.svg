@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" fill="none">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="48%" r="65%">
+      <stop offset="0%" stop-color="#071d4d"/>
+      <stop offset="55%" stop-color="#030a1a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <linearGradient id="neon" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5cc8ff"/>
+      <stop offset="50%" stop-color="#0066ff"/>
+      <stop offset="100%" stop-color="#002b80"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="600" height="450" fill="url(#bg)"/>
+  <g opacity="0.18" stroke="#0066ff" stroke-width="1">
+    <path d="M0 360 L600 360 M0 390 L600 390 M0 420 L600 420"/>
+    <path d="M120 330 L40 450 M210 330 L170 450 M300 330 L300 450 M390 330 L430 450 M480 330 L560 450"/>
+  </g>
+  <ellipse cx="300" cy="365" rx="165" ry="28" fill="#0066ff" opacity="0.22" filter="url(#glow)"/>
+  <ellipse cx="300" cy="365" rx="130" ry="18" stroke="#0066ff" stroke-width="1.5" fill="#040d21"/>
+  <!-- Stylized articulated low-poly 3D dragon figure -->
+  <g filter="url(#glow)">
+    <path d="M210 350 C175 310, 175 245, 225 220 C240 165, 290 120, 345 125 L395 95 L385 135 L425 148 L385 170 C395 215, 370 265, 330 285 C355 305, 395 315, 435 335 C380 365, 270 368, 210 350 Z" fill="url(#neon)" stroke="#7fd4ff" stroke-width="2.5"/>
+    <!-- Wing facets -->
+    <path d="M245 215 L155 125 L220 150 L185 95 L268 155 Z" fill="#0044cc" stroke="#66c2ff" stroke-width="2"/>
+    <path d="M325 185 L445 110 L410 175 L465 185 L360 230 Z" fill="#003399" stroke="#4db3ff" stroke-width="1.8" opacity="0.9"/>
+    <!-- 3D print layer contour lines -->
+    <path d="M235 260 Q300 245 360 262" stroke="#a6e1ff" stroke-width="1.2" opacity="0.6"/>
+    <path d="M225 290 Q300 275 365 292" stroke="#a6e1ff" stroke-width="1.2" opacity="0.55"/>
+    <path d="M220 320 Q300 308 380 322" stroke="#a6e1ff" stroke-width="1.2" opacity="0.5"/>
+    <!-- Glowing eye -->
+    <circle cx="364" cy="145" r="5" fill="#ffffff"/>
+  </g>
+  <text x="30" y="42" fill="#5cc8ff" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="3" opacity="0.85">JULIFOR3D · MULTICOLOR PLA+</text>
+</svg>

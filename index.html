@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JuliFor3D | Ideas · Diseño · Impresión 3D en Bogotá</title>
+  <meta
+    name="description"
+    content="JuliFor3D: impresión 3D multicolor, diseño y modelado 3D, figuras, decoración y objetos personalizados en Bogotá, Colombia. Tus ideas toman forma."
+  />
+  <meta name="theme-color" content="#000000" />
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpeg" />
+  <link rel="apple-touch-icon" href="assets/logo.jpeg" />
+
+  <!-- Tipografías Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Montserrat:wght@700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="tech-bg" aria-hidden="true"></div>
+
+  <!-- Banner de modo demostración (solo visible cuando config.js está vacío) -->
+  <div id="demoBanner" class="demo-banner hidden" role="status">
+    <span>
+      <strong>Modo demostración activo:</strong> estás viendo un catálogo de ejemplo y envío simulado. Conecta tus llaves de Supabase en <code>config.js</code> cuando estés listo.
+    </span>
+  </div>
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="#inicio" class="nav-brand" aria-label="JuliFor3D Inicio">
+        <img src="assets/logo.jpeg" alt="Logo JuliFor3D" class="nav-logo" />
+        <div class="nav-brand-text">
+          <span class="brand-wordmark">JuliFor<span class="accent-3d">3D</span></span>
+          <span class="nav-brand-sub">IDEAS · DISEÑO · IMPRESIÓN 3D</span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal">
+        <ul id="navLinks" class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#catalogo">Catálogo</a></li>
+          <li><a href="#mi-idea">Mi idea</a></li>
+          <li><a href="#como-funciona">Cómo funciona</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a
+          href="https://wa.me/573007709585?text=Hola%20JuliFor3D%2C%20quiero%20cotizar%20un%20proyecto%203D"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-primary btn-sm btn-nav-cta"
+        >
+          Cotizar
+        </a>
+        <button
+          id="navToggle"
+          class="nav-toggle"
+          type="button"
+          aria-label="Abrir menú"
+          aria-expanded="false"
+          aria-controls="navLinks"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="inicio" class="hero">
+      <div class="hero-stripes" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge-row">
+            <img src="assets/logo.jpeg" alt="Emblema JuliFor3D" class="hero-logo-mini" />
+            <div class="hero-brand-stack">
+              <h1 class="hero-title brand-wordmark">
+                JuliFor<span class="accent-3d">3D</span>
+              </h1>
+              <p class="hero-brand-sub">IDEAS · DISEÑO · IMPRESIÓN 3D</p>
+            </div>
+          </div>
+
+          <div class="hero-motto-wrap">
+            <p class="hero-motto">Tus ideas toman forma</p>
+          </div>
+
+          <p class="hero-desc">
+            De la idea a la realidad. Fabricamos piezas, figuras, decoración y accesorios personalizados con impresión 3D de alta precisión y tecnología multicolor en Bogotá.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#catalogo" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+              Ver catálogo
+            </a>
+            <a href="#mi-idea" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" />
+              </svg>
+              Tengo una idea
+            </a>
+          </div>
+
+          <div class="hero-highlights">
+            <span class="hero-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+              Alta precisión
+            </span>
+            <span class="hero-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 3v18M3 12h18" />
+              </svg>
+              Impresión Multicolor
+            </span>
+            <span class="hero-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Entregas en Bogotá
+            </span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="mascot-stage">
+            <div class="mascot-aura" aria-hidden="true"></div>
+            <div class="mascot-ring" aria-hidden="true"></div>
+            <img
+              src="assets/mascota.jpeg"
+              alt="Lobo JF, mascota oficial de JuliFor3D"
+              class="mascot-img"
+            />
+            <div class="mascot-tag">
+              <span class="dot" aria-hidden="true"></span>
+              <span>Lobo JF · Mascota Oficial</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SERVICIOS ================= -->
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">01 · Servicios</span>
+          <h2 class="section-title">Qué hacemos en <span>JuliFor3D</span></h2>
+          <p class="section-subtitle">
+            Combinamos diseño digital y manufactura aditiva para dar vida a proyectos únicos con acabados profesionales.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="neon-card service-card">
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+            </div>
+            <h3>Impresión 3D por encargo</h3>
+            <p>Tu idea, en físico.</p>
+          </article>
+
+          <article class="neon-card service-card">
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 1 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+              </svg>
+            </div>
+            <h3>Diseño y modelado 3D</h3>
+            <p>Desde el concepto hasta el modelo.</p>
+          </article>
+
+          <article class="neon-card service-card">
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+            <h3>Figuras y decoración</h3>
+            <p>Personajes, coleccionables y más.</p>
+          </article>
+
+          <article class="neon-card service-card">
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+              </svg>
+            </div>
+            <h3>Personalización de objetos</h3>
+            <p>Accesorios, soportes y objetos para el hogar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CATÁLOGO ================= -->
+    <section id="catalogo" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">02 · Catálogo</span>
+          <h2 class="section-title">Explora nuestras <span>creaciones 3D</span></h2>
+          <p class="section-subtitle">
+            Haz clic en cualquier producto para ver su descripción completa y pedirlo directamente por WhatsApp.
+          </p>
+        </div>
+
+        <div class="catalog-controls">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+              type="search"
+              id="catalogSearch"
+              placeholder="Buscar producto por nombre o detalle..."
+              aria-label="Buscar producto en el catálogo"
+            />
+          </div>
+
+          <div id="categoryFilters" class="category-filters" role="group" aria-label="Filtrar por categoría">
+            <button type="button" class="filter-pill active" data-category="all">Todos</button>
+          </div>
+        </div>
+
+        <div id="catalogGrid" class="catalog-grid" aria-live="polite">
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+          <div class="skeleton"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= MI IDEA (FORMULARIO) ================= -->
+    <section id="mi-idea" class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">03 · Mi Idea</span>
+          <h2 class="section-title">Cuéntanos tu <span>proyecto personalizado</span></h2>
+          <p class="section-subtitle">
+            ¿Tienes un boceto, una foto de referencia o un archivo <code>.STL</code>? Envíalo aquí y te preparamos tu cotización.
+          </p>
+        </div>
+
+        <div class="idea-layout">
+          <aside class="neon-card idea-info-card">
+            <h3>¿Cómo cotizamos tu idea?</h3>
+            <p class="section-subtitle">
+              Revisamos cada detalle para garantizar la mejor resistencia, acabado y combinación de colores para tu pieza.
+            </p>
+            <ul class="idea-bullets">
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Recibimos imágenes de referencia, bocetos en PDF o modelos listos en formato <strong>.STL</strong>.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Contamos con impresión <strong>multicolor</strong> para logos, figuras coleccionables y detalles en relieve.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Te respondemos por WhatsApp o correo con precio exacto y tiempo estimado de entrega en Bogotá.</span>
+              </li>
+            </ul>
+            <a
+              href="https://wa.me/573007709585?text=Hola%20JuliFor3D%2C%20tengo%20una%20idea%20para%20imprimir%20en%203D"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn btn-secondary"
+            >
+              ¿Prefieres hablar por WhatsApp?
+            </a>
+          </aside>
+
+          <form id="ideaForm" class="neon-card idea-form-card" novalidate>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label" for="ideaName">Nombre <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="ideaName"
+                  name="client_name"
+                  class="form-control"
+                  placeholder="Tu nombre completo"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="ideaContact">WhatsApp o correo <span class="req">*</span></label>
+                <input
+                  type="text"
+                  id="ideaContact"
+                  name="contact"
+                  class="form-control"
+                  placeholder="Ej: 300 123 4567 o correo@ejemplo.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group full">
+                <label class="form-label" for="ideaDesc">Descripción de la idea <span class="req">*</span></label>
+                <textarea
+                  id="ideaDesc"
+                  name="description"
+                  class="form-control"
+                  placeholder="Cuéntanos qué quieres fabricar, para qué lo vas a usar, cantidad de unidades o detalles especiales..."
+                  required
+                ></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="ideaSize">Tamaño aproximado</label>
+                <input
+                  type="text"
+                  id="ideaSize"
+                  name="approx_size"
+                  class="form-control"
+                  placeholder="Ej: 15 cm de alto x 10 cm de ancho"
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="ideaColors">Colores deseados</label>
+                <input
+                  type="text"
+                  id="ideaColors"
+                  name="colors"
+                  class="form-control"
+                  placeholder="Ej: Negro mate, azul neón y blanco"
+                />
+              </div>
+
+              <div class="form-group full">
+                <label class="checkbox-card" for="ideaMulticolor">
+                  <input type="checkbox" id="ideaMulticolor" name="is_multicolor" />
+                  <div>
+                    <span>¿Tu proyecto es Multicolor?</span>
+                    <small>Marca esta casilla si la pieza combina 2 o más colores en la impresión.</small>
+                  </div>
+                </label>
+              </div>
+
+              <div class="form-group full">
+                <label class="form-label" for="ideaFile">Archivo de referencia (opcional)</label>
+                <div id="fileDropzone" class="file-dropzone">
+                  <input
+                    type="file"
+                    id="ideaFile"
+                    name="reference_file"
+                    accept="image/*,.pdf,.stl"
+                  />
+                  <svg class="file-dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                  <p class="file-dropzone-title">Haz clic o arrastra tu archivo aquí</p>
+                  <p class="file-dropzone-hint">Acepta imágenes (JPG, PNG, WEBP), PDF o archivos 3D .STL (máx. 25 MB)</p>
+                  <div id="fileSelectedPill" class="file-selected hidden">
+                    <span id="fileSelectedName"></span>
+                    <button type="button" id="fileClearBtn" class="file-clear-btn" aria-label="Quitar archivo">×</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group full">
+                <button type="submit" id="ideaSubmitBtn" class="btn btn-primary" style="width: 100%;">
+                  Enviar mi idea para cotizar
+                </button>
+              </div>
+            </div>
+
+            <div id="ideaFeedback" class="form-feedback" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CÓMO FUNCIONA ================= -->
+    <section id="como-funciona" class="section">
+      <div class="container">
+        <div class="section-header centered">
+          <span class="section-tag">04 · Cómo Funciona</span>
+          <h2 class="section-title">De la idea a tus manos en <span>4 pasos</span></h2>
+          <p class="section-subtitle">
+            Un proceso claro, ágil y acompañado en cada etapa de fabricación.
+          </p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="neon-card step-card">
+            <span class="step-number">01</span>
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+                <path d="M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z" />
+              </svg>
+            </div>
+            <h3>Crea</h3>
+            <p>Nos cuentas tu idea o eliges un producto de nuestro catálogo.</p>
+          </article>
+
+          <article class="neon-card step-card">
+            <span class="step-number">02</span>
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                <line x1="12" y1="22.08" x2="12" y2="12" />
+              </svg>
+            </div>
+            <h3>Diseña</h3>
+            <p>Cotizamos tu proyecto, ajustamos detalles y aprobamos el modelo 3D.</p>
+          </article>
+
+          <article class="neon-card step-card">
+            <span class="step-number">03</span>
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <path d="M7 7h10" />
+                <path d="M12 7v6" />
+                <path d="M8 17h8" />
+                <path d="M9 13h6l-1 4h-4l-1-4z" />
+              </svg>
+            </div>
+            <h3>Imprime</h3>
+            <p>Fabricación 3D de alta precisión y multicolor con materiales de calidad.</p>
+          </article>
+
+          <article class="neon-card step-card">
+            <span class="step-number">04</span>
+            <div class="hex-badge" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                <line x1="9" y1="9" x2="9.01" y2="9" />
+                <line x1="15" y1="9" x2="15.01" y2="9" />
+              </svg>
+            </div>
+            <h3>Disfruta</h3>
+            <p>Coordinamos la entrega de tu pieza terminada en Bogotá.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= REGLAS DE COTIZACIÓN Y ENTREGAS ================= -->
+    <section id="reglas" class="section">
+      <div class="container">
+        <div class="neon-card rules-box">
+          <div class="section-header" style="margin-bottom: 12px;">
+            <span class="section-tag">05 · Cotización y Entregas</span>
+            <h2 class="section-title">Información clara antes de <span>tu pedido</span></h2>
+          </div>
+
+          <div class="rules-grid">
+            <div class="rule-item">
+              <div class="rule-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="1" x2="12" y2="23" />
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                </svg>
+              </div>
+              <h3>¿De qué depende el precio?</h3>
+              <p>
+                Cada cotización se calcula según los <strong>gramos de material</strong>, el <strong>tiempo de impresión</strong>, si requiere <strong>diseño 3D desde cero</strong> y la <strong>cantidad de colores (multicolor)</strong>.
+              </p>
+            </div>
+
+            <div class="rule-item">
+              <div class="rule-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="5" width="20" height="14" rx="2" />
+                  <line x1="2" y1="10" x2="22" y2="10" />
+                </svg>
+              </div>
+              <h3>Anticipo del 50%</h3>
+              <p>
+                Todos los pedidos personalizados y de catálogo <strong>inician producción con un anticipo del 50%</strong>. El 50% restante se cancela al momento de la entrega.
+              </p>
+            </div>
+
+            <div class="rule-item">
+              <div class="rule-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <h3>Cobertura de entregas</h3>
+              <p>
+                Actualmente realizamos <strong>entregas únicamente en Bogotá, Colombia</strong>. Coordinamos el envío o punto de entrega directamente contigo por WhatsApp.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACTO ================= -->
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="neon-card contact-banner">
+          <span class="section-tag">06 · Contacto</span>
+          <p class="closing-phrase">¡Tu idea, nuestro próximo proyecto!</p>
+          <p class="section-subtitle">
+            Escríbenos o síguenos en redes sociales para ver nuestras impresiones recientes, procesos multicolor y novedades.
+          </p>
+
+          <div class="social-cards">
+            <a
+              href="https://wa.me/573007709585"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn wa"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.59 5.95L0 24l6.33-1.66a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42zM12.07 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.84 9.84 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.13 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.88 9.89zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+              </svg>
+              <span>WhatsApp · 300 770 9585</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/julifor3d?bqrl=MXI0ZTZ4dXY5YWluYg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+              </svg>
+              <span>Instagram · @julifor3d</span>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@julifor3d?_r=1&_t=ZS-9BY5hIQCOIM"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="social-btn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+              <span>TikTok · @julifor3d</span>
+            </a>
+          </div>
+
+          <p class="coverage-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Entregas únicamente en Bogotá, Colombia.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.jpeg" alt="JuliFor3D" />
+        <div>
+          <p class="brand-wordmark">JuliFor<span class="accent-3d">3D</span></p>
+          <p class="footer-meta">IDEAS · DISEÑO · IMPRESIÓN 3D · Entregas únicamente en Bogotá, Colombia.</p>
+        </div>
+      </div>
+
+      <a href="admin.html" class="footer-admin-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+          <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+        </svg>
+        Panel administrativo
+      </a>
+    </div>
+  </footer>
+
+  <!-- ================= MODAL DE PRODUCTO ================= -->
+  <div id="productModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalProductTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <button type="button" id="modalCloseBtn" class="modal-close" aria-label="Cerrar detalle del producto">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+
+      <div class="product-modal-grid">
+        <div class="product-modal-media">
+          <img id="modalProductImg" src="" alt="" />
+        </div>
+        <div class="product-modal-info">
+          <span id="modalProductCat" class="modal-cat"></span>
+          <h3 id="modalProductTitle" class="modal-title"></h3>
+          <p id="modalProductPrice" class="modal-price"></p>
+          <p id="modalProductDesc" class="modal-desc"></p>
+          <p class="modal-note">
+            Producción bajo pedido con anticipo del 50%. Entregas únicamente en Bogotá, Colombia.
+          </p>
+          <div class="modal-actions">
+            <a id="modalWhatsappBtn" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.59 5.95L0 24l6.33-1.66a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42zM12.07 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.84 9.84 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.13 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.88 9.89zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+              </svg>
+              Pedirlo por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a
+    href="https://wa.me/573007709585?text=Hola%20JuliFor3D%2C%20quisiera%20informaci%C3%B3n%20sobre%20impresi%C3%B3n%203D"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="wa-float"
+    aria-label="Escribir a JuliFor3D por WhatsApp"
+    title="WhatsApp JuliFor3D (300 770 9585)"
+  >
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.15 1.59 5.95L0 24l6.33-1.66a11.86 11.86 0 0 0 5.73 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.45-8.42zM12.07 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.76.99 1-3.66-.24-.38a9.84 9.84 0 0 1-1.51-5.26c0-5.45 4.44-9.89 9.9-9.89 2.64 0 5.13 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 7c0 5.45-4.44 9.89-9.88 9.89zm5.42-7.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+    </svg>
+  </a>
+
+  <div id="toastContainer" class="toast-container" aria-live="polite"></div>
+
+  <!-- Scripts: Supabase CDN + Configuración + Capa de datos + Lógica pública -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="js/data-service.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
